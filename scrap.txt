@@ -1,0 +1,8 @@
+I created the aliases in this manner: 
+export aws_drilabs="577152972443/ALKSLabAdmin - awscoxautolabs156"
+export aws_drinp="625218762371/ALKSPowerUser - awsdrinp"
+export aws_dripp="183385486431/ALKSPowerUser - awsdripp"
+
+alias aws_drilabs='eval $(alks sessions open -a "$aws_drilabs")'
+alias aws_drinp='eval $(alks sessions open -a "$aws_drinp")'
+alias aws_dripp='eval $(alks sessions open -a "$aws_dripp")'

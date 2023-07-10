@@ -1,0 +1,21 @@
+{
+  "name": "wgt-golf-swings",
+  "version": "1.0.0",
+  "description": "A service to track WGT golf swings",
+  "main": "index.js",
+  "scripts": {
+    "deploy:db": "cd stacks/dynamodb && sls deploy --config serverless.ts --stage",
+    "deploy:codebuild": "cd stacks/codebuild && sls deploy --config serverless.ts --stage",
+    "deploy:app": "cd stacks/lambdas && sls deploy --config serverless.ts --stage",    
+    "deploy:all": "npm run deploy:codebuild -- ${npm_config_stage} && npm run deploy:db -- ${npm_config_stage} && npm run deploy:services -- ${npm_config_stage}"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.76",
+    "@types/node": "^14.14.41",
+    "@serverless/typescript": "^2.23.0",
+    "aws-sdk": "^2.792.0",
+    "serverless": "^2.23.0",
+    "serverless-offline": "^6.8.0",
+    "typescript": "^4.2.4"
+  }
+}

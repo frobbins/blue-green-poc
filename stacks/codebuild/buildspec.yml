@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - aws cloudformation package --template-file serverless.yml --s3-bucket ${DEPLOYMENT_BUCKET} --output-template-file outputtemplate.yml
+      - |
+        TRAFFIC_ITERATIONS=10
+        TIME_BETWEEN_SHIFTS=300
+        echo "{\"shiftIterations\": $TRAFFIC_ITERATIONS, \"timeBetweenShifts\": $TIME_BETWEEN_SHIFTS}" > config.json
+artifacts:
+  files:
+    - outputtemplate.yml
+    - config.json
+  discard-paths: yes

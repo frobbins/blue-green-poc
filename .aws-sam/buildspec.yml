@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+      - aws cloudformation package --template-file template.yaml --s3-bucket $S3_BUCKET --s3-prefix $CODEBUILD_BUILD_ID --output-template-file packaged-template.yaml
+  post_build:
+    commands:
+      - aws cloudformation deploy --template-file packaged-template.yaml --stack-name $STACK_NAME --capabilities CAPABILITY_IAM
+      - aws stepfunctions start-execution --state-machine-arn $STATE_MACHINE_ARN --input '{ "lambdaVersion": "<new lambda version>", "lambdaNames": [ "<lambda-1>", "<lambda-2>" ]}'
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
