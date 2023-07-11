@@ -4,18 +4,22 @@
   "description": "A service to track WGT golf swings",
   "main": "index.js",
   "scripts": {
+    "test": "jest --config=jest.config.js",
     "deploy:db": "cd stacks/dynamodb && sls deploy --config serverless.ts --stage",
     "deploy:codebuild": "cd stacks/codebuild && sls deploy --config serverless.ts --stage",
-    "deploy:app": "cd stacks/lambdas && sls deploy --config serverless.ts --stage",    
+    "deploy:app": "cd stacks/app && sls deploy --config serverless.ts --stage",
     "deploy:all": "npm run deploy:codebuild -- ${npm_config_stage} && npm run deploy:db -- ${npm_config_stage} && npm run deploy:services -- ${npm_config_stage}"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.76",
-    "@types/node": "^14.14.41",
     "@serverless/typescript": "^2.23.0",
+    "@types/aws-lambda": "^8.10.76",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^14.14.41",
     "aws-sdk": "^2.792.0",
+    "jest": "^29.6.1",
     "serverless": "^2.23.0",
     "serverless-offline": "^6.8.0",
+    "ts-jest": "^29.1.1",
     "typescript": "^4.2.4"
   }
 }

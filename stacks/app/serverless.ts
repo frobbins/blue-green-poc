@@ -39,6 +39,26 @@ const serverlessConfiguration: AWS = {
         },
       }],
     },
+    healthcheck: {
+      handler: 'src/handlers/healthcheck.main',
+      events: [{
+        http: {
+          method: 'get',
+          path: 'healthcheck',
+        }
+      }]
+    },
+    getActiveStage: {
+      handler: 'src/utils/activeStage.getActiveStage',
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: 'active-stage',
+          },
+        },
+      ],
+    }
   },
 };
 

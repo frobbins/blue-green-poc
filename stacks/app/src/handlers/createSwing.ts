@@ -1,9 +1,12 @@
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { DynamoDB } from 'aws-sdk';
 
-const dynamoDb = new DynamoDB.DocumentClient();
+const dynamoDb = new DynamoDB.DocumentClient({
+  region: 'us-east-1',
 
-interface Swing {
+})
+
+interface SwingInput {
   stick: number;
   greenSpeed: number;
   elevation: number;
@@ -13,19 +16,24 @@ interface Swing {
   horizontalStop: number;
 }
 
-export const main: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+export const createSwing = async (event: APIGatewayProxyEvent | string): Promise<APIGatewayProxyResult> => {
+
+  let swingInput: SwingInput;
   let response: APIGatewayProxyResult;
 
+  if (typeof event === 'string') {
+    swingInput = JSON.parse(event);
+  } else {
+    swingInput = JSON.parse(event.body);
+  }
+
   try {
-    const data = JSON.parse(event.body || '{}') as Swing;
-    
     // Validation could be added here to ensure that the data object contains all required properties
-    
     const params = {
       TableName: process.env.DYNAMODB_TABLE || '',
       Item: {
         swingId: new Date().getTime().toString(),
-        ...data,
+        ...swingInput,
       },
     };
     

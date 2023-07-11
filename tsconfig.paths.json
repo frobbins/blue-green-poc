@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@functions/*": ["src/functions/*"],
-      "@libs/*": ["src/libs/*"]
+      "@functions/*": ["stacks/app/src/handlers/*"],
+      "@libs/*": ["stacks/app/src/libs/*"],
+      "@utils/*": ["stacks/app/src/utils/*"]
     }
   }
 }
