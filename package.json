@@ -1,14 +1,13 @@
 {
-  "name": "wgt-golf-swings",
+  "name": "wgt-guru",
   "version": "1.0.0",
   "description": "A service to track WGT golf swings",
   "main": "index.js",
   "scripts": {
+    "install": "npm ci",
     "build": "webpack --config webpack.config.js",
     "test": "jest --config=jest.config.js",
-    "deploy:db": "cd stacks/dynamodb && sls deploy --config serverless.ts --stage",
-    "deploy:app": "cd stacks/app && sls deploy --config serverless.ts --stage",
-    "deploy:all": "npm run deploy:codebuild -- ${npm_config_stage} && npm run deploy:db -- ${npm_config_stage} && npm run deploy:services -- ${npm_config_stage}"
+    "deploy:app": "sls deploy --config serverless.ts --stage"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.23.0",

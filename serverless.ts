@@ -1,7 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS = {
-  service: 'wgt-golf-swings-service',
+  service: 'wgt-guru',
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
