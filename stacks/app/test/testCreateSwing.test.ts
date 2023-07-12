@@ -15,7 +15,7 @@ describe('createSwing', () => {
             gs: 2,
         };
 
-        const event = JSON.stringify(swingInput);
+        // const event = JSON.stringify(swingInput);
         //const result = await createSwing(event);
 
         expect(swingInput.distance).toEqual(120);
