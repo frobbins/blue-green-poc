@@ -1,5 +1,3 @@
-import { createSwing } from '../src/handlers/createSwing';
-
 beforeAll(() => {
     process.env.DYNAMODB_TABLE = 'wgt-golf-swings-db-green';
     process.env.AWS_REGION = 'us-east-1';
