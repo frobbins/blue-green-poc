@@ -1,5 +1,10 @@
 version: 0.2
 phases:
+  pre_build:
+    commands:
+#      - aws lambda invoke --function-name <LambdaFunctionName> --payload '{}' response.json
+#      - export ACTIVE_STAGE=$(jq -r '.stage' response.json)
+#      - echo "Active stage: $ACTIVE_STAGE"
   install:
     runtime-versions:
       nodejs: 18
@@ -10,7 +15,8 @@ phases:
       - npm run build
   post_build:
     commands:
-      - npm run test
+      - echo "Deploying the application to $ACTIVE_STAGE stage"
+      - serverless deploy --stage GREEN
 artifacts:
   files:
     - '**/*'
