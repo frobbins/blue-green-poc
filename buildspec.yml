@@ -6,6 +6,7 @@ phases:
       nodejs: 18
     commands:
       - npm install --save-dev ts-node
+      - npm install --save-dev tsconfig-paths
       - npm install -g serverless   # Install serverless framework globally
       - npm ci                      # Install project dependencies
 
