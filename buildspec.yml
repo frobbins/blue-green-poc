@@ -1,26 +1,24 @@
 version: 0.2
+
 phases:
-  pre_build:
-    commands:
-#      - aws lambda invoke --function-name <LambdaFunctionName> --payload '{}' response.json
-#      - export ACTIVE_STAGE=$(jq -r '.stage' response.json)
-#      - echo "Active stage: $ACTIVE_STAGE"
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 14
     commands:
-      - npm install
+      - npm install -g serverless   # Install serverless framework globally
+      - npm ci                      # Install project dependencies
+
+  pre_build:
+    commands:
+#      - export LIVE_TRAFFIC_STAGE=$(aws lambda get-function-configuration --function-name live-traffic-lambda --query 'Environment.Variables.STAGE' --output text)
+#      - echo "Live Traffic Stage: $LIVE_TRAFFIC_STAGE"
+
   build:
     commands:
-      - npm ci
-  post_build:
-    commands:
-#      - echo "Deploying the application to $ACTIVE_STAGE stage"
-      - echo "Deploying the application to GREEN stage"
-      - serverless deploy --stage GREEN
+      - serverless deploy --stage non-traffic --config serverless.ts
+
 artifacts:
   files:
-    - '**/*'
-  discard-paths: no
-  base-directory: build
-  name: wgt-guru
+    - template.yaml
+    - packaged.yaml
+    - serverless.ts
