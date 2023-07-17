@@ -15,7 +15,8 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo "Deploying the application to $ACTIVE_STAGE stage"
+#      - echo "Deploying the application to $ACTIVE_STAGE stage"
+      - echo "Deploying the application to GREEN stage"
       - serverless deploy --stage GREEN
 artifacts:
   files:
