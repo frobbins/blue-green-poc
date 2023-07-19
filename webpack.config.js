@@ -3,11 +3,13 @@ const glob = require('glob');
 
 module.exports = {
     mode: 'development', // or 'production'
-    entry: glob.sync('./stacks/app/**/*.ts'),
+    entry: './src/handlers/getSwings.ts',
     output: {
-        filename: 'bundle.js',
         path: path.resolve(__dirname, 'build'),
+        filename: 'getSwings.js',
+        libraryTarget: 'commonjs',
     },
+    target: 'node',
     resolve: {
         extensions: ['.ts', '.js'],
     },

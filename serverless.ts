@@ -2,12 +2,25 @@ import type { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS = {
   service: 'wgt-guru',
+  frameworkVersion: '*',
+  custom: {
+    'serverless-plugin-canary-deployments': {
+      stages: ['pink'],
+      preTrafficHook: 'preTrafficHook',
+      postTrafficHook: 'postTrafficHook',
+      automaticRollback: true,
+      type: 'Linear10PercentEvery2Minute',
+      alias: 'Live',
+    },
+  },
+  plugins: ['serverless-webpack', 'serverless-plugin-canary-deployments'],
   provider: {
+    stage: 'pink',
     name: 'aws',
     runtime: 'nodejs14.x',
     region: 'us-east-1',
     environment: {
-      DYNAMODB_TABLE: 'wgt-golf-swings-db-${opt:stage, self:provider.stage}',
+      DYNAMODB_TABLE: 'wgt-golf-swings-db-green'
     },
     iamRoleStatements: [{
       Effect: 'Allow',

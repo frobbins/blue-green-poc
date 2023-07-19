@@ -2,6 +2,7 @@
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "lib": ["ESNext"],
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": false,
@@ -11,8 +12,7 @@
     "outDir": "lib"
   },
   "include": [
-    "src/handlers/*.ts", "stacks/app/handlers/serverless.ts",
-    "src/libs/*.ts",
+    "src/handlers/*.ts", "serverless",
     "src/utils/*.ts"
   ],
   "exclude": [
