@@ -15,8 +15,8 @@
     "@middy/http-json-body-parser": "^3.4.0",
     "aws-sdk": "^2.1416.0",
     "commonjs": "^0.0.1",
-    "path": "^0.12.7",
-    "serverless-plugin-canary-deployments": "^0.8.0"
+    "csv-parser": "^3.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.30.1",

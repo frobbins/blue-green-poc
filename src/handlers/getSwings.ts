@@ -12,10 +12,12 @@ export const main: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent):
     };
 
     const data = await dynamoDb.scan(params).promise();
+    const reorderedItems = data.Items.map(item => reorderKeys(item));
+    console.log(reorderedItems);
 
     response = {
       statusCode: 200,
-      body: JSON.stringify(data.Items),
+      body: JSON.stringify(reorderedItems),
     };
   } catch (error) {
     console.error(error);
@@ -28,3 +30,17 @@ export const main: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent):
 
   return response;
 };
+
+function reorderKeys(item: DynamoDB.DocumentClient.AttributeMap) {
+  const keys: Array<string> = ['playerId', 'timestamp']; // replace with your actual key attribute names
+  let newItem: DynamoDB.DocumentClient.AttributeMap = {};
+  keys.forEach(key => {
+    newItem[key] = item[key];
+  });
+  Object.keys(item).forEach(key => {
+    if (!newItem.hasOwnProperty(key)) {
+      newItem[key] = item[key];
+    }
+  });
+  return newItem;
+}
