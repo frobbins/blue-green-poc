@@ -7,7 +7,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     stage: 'pink',
     name: 'aws',
-    runtime: 'nodejs16.x',
+    runtime: 'nodejs18.x',
     region: 'us-east-1',
     environment: {
       DYNAMODB_TABLE: 'GolfSwingMetrics'
