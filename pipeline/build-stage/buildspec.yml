@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Running unit tests...
+      - npm run test  # this assumes that you have a "test" script in your package.json
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code...
+      - npm run build  # this assumes that you have a "build" script in your package.json
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist'  # adjust this if your build outputs to a different directory
