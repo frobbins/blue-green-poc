@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@functions/*": ["src/handlers/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@test/*": ["src/tests/*"]
     }
   }
 }

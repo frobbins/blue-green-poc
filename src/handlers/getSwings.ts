@@ -1,10 +1,12 @@
-import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda';
-import { DynamoDB } from 'aws-sdk';
+import { APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda';
+import { DynamoDB, config as AWSConfig } from 'aws-sdk';
+import { reorderKeys } from '@utils/reorderKeys';
+AWSConfig.update({ region: 'us-east-1' });
+
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export const main: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  let response: APIGatewayProxyResult;
+export const getSwings: APIGatewayProxyHandler = async (): Promise<APIGatewayProxyResult> => {
 
   try {
     const params = {
@@ -15,32 +17,16 @@ export const main: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent):
     const reorderedItems = data.Items.map(item => reorderKeys(item));
     console.log(reorderedItems);
 
-    response = {
+    return {
       statusCode: 200,
       body: JSON.stringify(reorderedItems),
     };
   } catch (error) {
     console.error(error);
 
-    response = {
+    return {
       statusCode: 500,
       body: JSON.stringify({ message: 'Unable to get swings' }),
     };
   }
-
-  return response;
 };
-
-function reorderKeys(item: DynamoDB.DocumentClient.AttributeMap) {
-  const keys: Array<string> = ['playerId', 'timestamp']; // replace with your actual key attribute names
-  let newItem: DynamoDB.DocumentClient.AttributeMap = {};
-  keys.forEach(key => {
-    newItem[key] = item[key];
-  });
-  Object.keys(item).forEach(key => {
-    if (!newItem.hasOwnProperty(key)) {
-      newItem[key] = item[key];
-    }
-  });
-  return newItem;
-}

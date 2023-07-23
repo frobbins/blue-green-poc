@@ -4,7 +4,7 @@ import * as AWS from 'aws-sdk';
 
 const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
-export const main: APIGatewayProxyHandler = async (event, context) => {
+export const main: APIGatewayProxyHandler = async () => {
     // Database healthcheck
     try {
         await db.get({ TableName: process.env.TABLE_NAME!, Key: { id: 'healthcheck' } }).promise();
