@@ -34,7 +34,7 @@ describe('getSwings handler', () => {
         AWSMock.restore('DynamoDB.DocumentClient', 'scan');
     });
 
-    it('returns successful response when scan is successful', async () => {
+    it('returns successful response if scan is successful', async () => {
         const result = await getSwings(wgtGuruApiEvent, context, () => {});
         const response: APIGatewayProxyResult = result as APIGatewayProxyResult;
 
