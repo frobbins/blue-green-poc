@@ -2,10 +2,14 @@ const path = require('path');
 
 module.exports = {
     mode: 'development', // or 'production'
-    entry: './src/handlers/getSwings.ts',
+    entry: {
+        getSwings: './src/handlers/getSwings.ts',
+        createSwing: './src/handlers/createSwing.ts',
+        healthcheck: './src/handlers/healthcheck.ts',
+    },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'getSwings.js',
+        filename: '[name].js',
         libraryTarget: 'commonjs',
     },
     target: 'node',
