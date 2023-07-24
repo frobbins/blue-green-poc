@@ -22,4 +22,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'dist'  # adjust this if your build outputs to a different directory
+  base-directory: 'lib'  # adjust this if your build outputs to a different directory
