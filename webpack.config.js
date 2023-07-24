@@ -1,5 +1,4 @@
 const path = require('path');
-const glob = require('glob');
 
 module.exports = {
     mode: 'development', // or 'production'
@@ -12,6 +11,10 @@ module.exports = {
     target: 'node',
     resolve: {
         extensions: ['.ts', '.js'],
+        alias: {
+            '@functions': path.resolve(__dirname, 'src/handlers'),
+            '@utils': path.resolve(__dirname, 'src/utils'),
+        },
     },
     module: {
         rules: [
@@ -27,6 +30,6 @@ module.exports = {
         fs: 'fs',
         assert: 'assert',
         os: 'os',
-        constants: 'constants'
+        constants: 'constants',
     },
 };
