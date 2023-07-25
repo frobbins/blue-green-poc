@@ -7,7 +7,11 @@ const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 export const main: APIGatewayProxyHandler = async () => {
     // Database healthcheck
     try {
-        await db.get({ TableName: process.env.TABLE_NAME!, Key: { id: 'healthcheck' } }).promise();
+        const params = {
+            TableName: process.env.DYNAMODB_TABLE || '',
+        };
+
+        await db.scan(params).promise();
 
         return {
             statusCode: 200,

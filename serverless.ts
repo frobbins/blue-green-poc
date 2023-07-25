@@ -23,7 +23,7 @@ const serverlessConfiguration: AWS = {
   },
   functions: {
     createSwing: {
-      handler: 'src/handlers/createSwing.main',
+      handler: 'src/handlers/createSwing.createSwing',
       events: [{
         http: {
           path: 'swing',
@@ -33,7 +33,7 @@ const serverlessConfiguration: AWS = {
       }],
     },
     getAllSwings: {
-      handler: 'src/handlers/getSwings.main',
+      handler: 'src/handlers/getSwings.getSwings',
       events: [{
         http: {
           path: 'swings',
@@ -51,7 +51,7 @@ const serverlessConfiguration: AWS = {
         }
       }]
     }
-  },
+  }
 };
 
 module.exports = serverlessConfiguration;
