@@ -3,22 +3,19 @@ Resources:
   - TargetService:
       Type: AWS::Lambda::Function
       Properties:
-        Name: "wgt-guru-pink-getAllSwings"
-        Alias: "staging"  # Use the alias of the staging deployment
-
+        Name: wgt-guru-pink-getAllSwings
+        Alias: staging
   - TargetService:
       Type: AWS::Lambda::Function
       Properties:
-        Name: "wgt-guru-pink-createSwing"
-        Alias: "staging"  # Use the alias of the staging deployment
-
+        Name: wgt-guru-pink-createSwing
+        Alias: staging
   - TargetService:
       Type: AWS::Lambda::Function
       Properties:
-        Name: "wgt-guru-pink-healthcheck"
-        Alias: "staging"  # Use the alias of the staging deployment
-
+        Name: wgt-guru-pink-healthcheck
+        Alias: staging
 Hooks:
   BeforeAllowTraffic:
-    - Location: "smokeTest.sh"  # Path to your smoke test script
-      Timeout: 600  # Maximum time allowed for the smoke test
+    - Location: smokeTest.sh
+      Timeout: 600
