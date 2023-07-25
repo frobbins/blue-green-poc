@@ -1,0 +1,45 @@
+version: 0.0
+Resources:
+  - GetAllSwings:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "wgt-guru-pink-getAllSwings"
+        Alias: "staging"  # Use the alias of the staging deployment
+  - CreateSwing:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "wgt-guru-pink-createSwing"
+        Alias: "staging"  # Use the alias of the staging deployment
+  - HealthCheck:
+      Type: AWS::Lambda::Function
+      Properties:
+        Name: "wgt-guru-pink-healthcheck"
+        Alias: "staging"  # Use the alias of the staging deployment
+
+Hooks:
+  BeforeAllowTraffic: !Ref BeforeAllowTraffic
+#  AfterAllowTraffic: !Ref AfterAllowTraffic
+
+# Define the BeforeAllowTraffic hook
+BeforeAllowTraffic:
+  - Location: "smokeTest.sh"  # Path to your smoke test script
+    Timeout: 600  # Maximum time allowed for the smoke test
+    Properties:
+      # Define any required environment variables for your smoke test
+      # Example:
+#      - Key: "API_URL"
+#        Value: "https://your-staging-api-endpoint"
+#      - Key: "API_KEY"
+#        Value: "your-staging-api-key"
+
+# Define the AfterAllowTraffic hook
+#AfterAllowTraffic:
+#  - Location: "src/lambdas/completeDeployment.sh"  # Path to your script to complete the deployment
+#    Timeout: 600  # Maximum time allowed for the completion script
+#    Properties:
+#      # Define any required environment variables for the completion script
+#      # Example:
+#      - Key: "LIVE_ALIAS"
+#        Value: "live"
+#      - Key: "NEW_DEPLOYMENT_ALIAS"
+#        Value: "staging"

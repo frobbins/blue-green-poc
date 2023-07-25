@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Replace 'STACK_NAME' with the name of your CloudFormation stack
-STACK_NAME="your-stack-name"
+STACK_NAME="wgt-guru-pink"
 
 # Get the endpoint URL of the API Gateway deployed in the new stack
-endpoint=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query 'Stacks[0].Outputs[?OutputKey==`ApiEndpoint`].OutputValue' --output text)
+endpoint=$(aws cloudformation describe-stacks --stack-name wgt-guru-pink --query 'Stacks[0].Outputs[?OutputKey==`ServiceEndpoint`].OutputValue' --output text)
 
 # Add the '/healthcheck' path to the endpoint URL for the health check Lambda
 HEALTH_CHECK_ENDPOINT="$endpoint/healthcheck"

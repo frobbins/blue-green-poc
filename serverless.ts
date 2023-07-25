@@ -51,7 +51,44 @@ const serverlessConfiguration: AWS = {
         }
       }]
     }
-  }
+  },
+  outputs: {
+    ApiEndpoint: {
+      Description: "API Gateway endpoint URL for your service",
+      Value: {
+        "Fn::Sub": "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/${opt:stage, self:provider.stage}/"
+      }
+    }
+  },
+  resources: {
+    Resources: {
+      GetSwingsAliasLive: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-getAllSwings',
+          FunctionVersion: '$LATEST',
+          Name: 'staging',
+        },
+      },
+      CreateSwingAliasLive: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-createSwing',
+          FunctionVersion: '$LATEST',
+          Name: 'staging',
+        },
+      },
+      HealthCheckAliasLive: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-healthcheck',
+          FunctionVersion: '$LATEST',
+          Name: 'staging',
+        },
+      },
+      // You can define aliases for other functions as well
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;
