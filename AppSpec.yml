@@ -1,16 +1,16 @@
 version: 0.0
 Resources:
-  - TargetService:
+  - getAllSwings:
       Type: AWS::Lambda::Function
       Properties:
         Name: wgt-guru-pink-getAllSwings
         Alias: staging
-  - TargetService:
+  - createSwing:
       Type: AWS::Lambda::Function
       Properties:
         Name: wgt-guru-pink-createSwing
         Alias: staging
-  - TargetService:
+  - healthcheck:
       Type: AWS::Lambda::Function
       Properties:
         Name: wgt-guru-pink-healthcheck
