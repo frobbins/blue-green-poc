@@ -5,17 +5,5 @@ Resources:
       Properties:
         Name: wgt-guru-pink-getAllSwings
         Alias: staging
-  - createSwing:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: wgt-guru-pink-createSwing
-        Alias: staging
-  - healthcheck:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: wgt-guru-pink-healthcheck
-        Alias: staging
-Hooks:
-  BeforeAllowTraffic:
-    - Location: smokeTest.sh
-      Timeout: 600
+        CurrentVersion: "14"
+        TargetVersion: "15"
