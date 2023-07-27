@@ -11,5 +11,6 @@ export const reorderKeys = (item: DynamoDB.DocumentClient.AttributeMap): DynamoD
             newItem[key] = item[key];
         }
     });
+    
     return newItem;
 }
