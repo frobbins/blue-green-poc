@@ -62,30 +62,30 @@ const serverlessConfiguration: AWS = {
   },
   resources: {
     Resources: {
-      GetSwingsAliasLive: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-getAllSwings',
-          FunctionVersion: '$LATEST',
-          Name: 'live',
-        },
-      },
-      CreateSwingAliasLive: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-createSwing',
-          FunctionVersion: '$LATEST',
-          Name: 'live',
-        },
-      },
-      HealthCheckAliasLive: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-healthcheck',
-          FunctionVersion: '$LATEST',
-          Name: 'live',
-        },
-      },
+      // GetSwingsAliasLive: {
+      //   Type: 'AWS::Lambda::Alias',
+      //   Properties: {
+      //     FunctionName: 'wgt-guru-pink-getAllSwings',
+      //     FunctionVersion: '$LATEST',
+      //     Name: 'live',
+      //   },
+      // },
+      // CreateSwingAliasLive: {
+      //   Type: 'AWS::Lambda::Alias',
+      //   Properties: {
+      //     FunctionName: 'wgt-guru-pink-createSwing',
+      //     FunctionVersion: '$LATEST',
+      //     Name: 'live',
+      //   },
+      // },
+      // HealthCheckAliasLive: {
+      //   Type: 'AWS::Lambda::Alias',
+      //   Properties: {
+      //     FunctionName: 'wgt-guru-pink-healthcheck',
+      //     FunctionVersion: '$LATEST',
+      //     Name: 'live',
+      //   },
+      // },
       GetSwingsAliasStaging: {
         Type: 'AWS::Lambda::Alias',
         Properties: {
