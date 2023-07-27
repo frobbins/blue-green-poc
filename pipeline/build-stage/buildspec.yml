@@ -21,7 +21,7 @@ phases:
 
   post_build:
     commands:
-      - echo Executing blue-green deployment
+      - echo executing blue-green deployment
       - npx serverless deploy
 
 artifacts:
