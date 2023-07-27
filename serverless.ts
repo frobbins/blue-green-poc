@@ -28,18 +28,7 @@ const serverlessConfiguration: AWS = {
         http: {
           path: 'swing',
           method: 'post',
-          cors: true,
-          authorizer: {
-            arn: {
-              "Fn::Join": [":", [
-                "arn:aws:execute-api",
-                { "Ref": "AWS::Region" },
-                { "Ref": "AWS::AccountId" },
-                { "Ref": "ApiGatewayRestApi" },
-                "live/wgt-guru-pink-healthcheck"
-              ]]
-            },
-          },
+          cors: true,          
         },
       }],
     },
@@ -49,18 +38,7 @@ const serverlessConfiguration: AWS = {
         http: {
           path: 'swings',
           method: 'get',
-          cors: true,
-          authorizer: {
-            arn: {
-              "Fn::Join": [":", [
-                "arn:aws:execute-api",
-                { "Ref": "AWS::Region" },
-                { "Ref": "AWS::AccountId" },
-                { "Ref": "ApiGatewayRestApi" },
-                "live/wgt-guru-pink-getAllSwings"
-              ]]
-            },
-          },
+          cors: true,          
         },        
       }],
     },
@@ -69,18 +47,7 @@ const serverlessConfiguration: AWS = {
       events: [{
         http: {
           method: 'get',
-          path: 'healthcheck',
-          authorizer: {
-            arn: {
-              "Fn::Join": [":", [
-                "arn:aws:execute-api",
-                { "Ref": "AWS::Region" },
-                { "Ref": "AWS::AccountId" },
-                { "Ref": "ApiGatewayRestApi" },
-                "live/wgt-guru-pink-healthcheck"
-              ]]
-            },
-          },
+          path: 'healthcheck',          
         }
       }]
     }
