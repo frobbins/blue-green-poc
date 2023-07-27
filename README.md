@@ -6,7 +6,7 @@ For detailed instructions, please refer to the [documentation](https://www.serve
 
 ## Installation/deployment instructions
 
-Depending on your favorite package manager, follow the instructions below to deploy your project.
+Depending on your favorite package manager, follow the instructions below to deploy your project .
 
 > **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If you're using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime.
 
