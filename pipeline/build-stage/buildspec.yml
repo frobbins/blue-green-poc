@@ -24,8 +24,8 @@ phases:
       - echo executing blue-green deployment
       - npx serverless deploy
 
-  artifacts:
-    files:
-      - ".serverless/cloudformation-template-update-stack.json"
-      - ".serverless/serverless-state.json"
-    base-directory: "./"
+artifacts:
+  files:
+    - ".serverless/cloudformation-template-update-stack.json"
+    - ".serverless/serverless-state.json"
+  base-directory: "./"
