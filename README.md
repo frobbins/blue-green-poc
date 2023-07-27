@@ -12,7 +12,7 @@ Depending on your favorite package manager, follow the instructions below to dep
 
 ### Using NPM
 
-- Run `npm i` to install the project dependencies
+- Run `npm i` to install the project dependencies.  
 - Run `npx sls deploy` to deploy this stack to AWS
 
 ### Using Yarn
