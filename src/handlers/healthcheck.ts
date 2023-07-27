@@ -16,7 +16,7 @@ export const main: APIGatewayProxyHandler = async () => {
         return {
             statusCode: 200,
             body: JSON.stringify({
-                message: 'Server and database are healthy for staging!',
+                message: 'Server and database are healthy for staging!!',
             }),
         };
     } catch (error) {
