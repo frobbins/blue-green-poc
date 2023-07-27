@@ -1,9 +1,0 @@
-version: 0.0
-Resources:
-  - getAllSwings:
-      Type: AWS::Lambda::Function
-      Properties:
-        Name: wgt-guru-pink-getAllSwings
-        Alias: staging
-        CurrentVersion: "14"
-        TargetVersion: "15"

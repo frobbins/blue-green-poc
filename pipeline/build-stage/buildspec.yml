@@ -11,17 +11,20 @@ phases:
   pre_build:
     commands:
       - echo Running unit tests...
-      - npm run test  # this assumes that you have a "test" script in your package.json
+      - npm run test
 
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code...
-      - npm run build  # this assumes that you have a "build" script in your package.json
-      - cp AppSpec.yml build/
-      - cp smokeTest.sh build/
+      - npm run build
+
+  post_build:
+    commands:
+      - echo Running isolated deployment
+      - npm run deploy
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'build'  # adjust this if your build outputs to a different directory
+    - "**/*"
+  base-directory: "build"

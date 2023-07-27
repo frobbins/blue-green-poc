@@ -67,7 +67,7 @@ const serverlessConfiguration: AWS = {
         Properties: {
           FunctionName: 'wgt-guru-pink-getAllSwings',
           FunctionVersion: '$LATEST',
-          Name: 'staging',
+          Name: 'live',
         },
       },
       CreateSwingAliasLive: {
@@ -75,7 +75,7 @@ const serverlessConfiguration: AWS = {
         Properties: {
           FunctionName: 'wgt-guru-pink-createSwing',
           FunctionVersion: '$LATEST',
-          Name: 'staging',
+          Name: 'live',
         },
       },
       HealthCheckAliasLive: {
@@ -83,10 +83,33 @@ const serverlessConfiguration: AWS = {
         Properties: {
           FunctionName: 'wgt-guru-pink-healthcheck',
           FunctionVersion: '$LATEST',
+          Name: 'live',
+        },
+      },
+      GetSwingsAliasStaging: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-getAllSwings',
+          FunctionVersion: '$LATEST',
           Name: 'staging',
         },
       },
-      // You can define aliases for other functions as well
+      CreateSwingAliasStaging: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-createSwing',
+          FunctionVersion: '$LATEST',
+          Name: 'staging',
+        },
+      },
+      HealthCheckAliasStaging: {
+        Type: 'AWS::Lambda::Alias',
+        Properties: {
+          FunctionName: 'wgt-guru-pink-healthcheck',
+          FunctionVersion: '$LATEST',
+          Name: 'staging',
+        },
+      },
     },
   },
 };
