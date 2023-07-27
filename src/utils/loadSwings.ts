@@ -5,6 +5,7 @@ import fs from 'fs';
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function uploadData(fileName: string, tableName: string) {
+    console.log(`Uploading data!!!`);
     try {
         fs.createReadStream(fileName)
             .pipe(csv())
