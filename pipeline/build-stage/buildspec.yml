@@ -22,7 +22,7 @@ phases:
   post_build:
     commands:
       - echo Running isolated deployment
-      - npm run deploy
+      - serverless deploy
 
 artifacts:
   files:
