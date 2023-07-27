@@ -10,7 +10,7 @@ phases:
 
   pre_build:
     commands:
-      - echo Running unit tests...
+      - echo Running all the unit tests...
       - npm run test
 
   build:
