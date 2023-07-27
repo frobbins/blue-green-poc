@@ -26,6 +26,8 @@ phases:
       - echo "Build Server Path: $CODEBUILD_SRC_DIR"
 
 artifacts:
-  files:
-    - "**/*"
-  base-directory: ".serverless"
+  artifacts:
+    files:
+      - ".serverless/cloudformation-template-update-stack.json"
+      - ".serverless/serverless-state.json"
+    base-directory: "./"
