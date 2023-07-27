@@ -18,7 +18,7 @@ async function uploadData(fileName: string, tableName: string) {
                 try {
                     await dynamodb.put(params).promise();
                 } catch (err) {
-                    console.error(`Failed to upload item: ${JSON.stringify(item)}, ${err}`);
+                    console.error(`Failed!! to upload item: ${JSON.stringify(item)}, ${err}`);
                 }
             })
             .on('end', () => {
