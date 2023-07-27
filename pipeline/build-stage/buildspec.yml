@@ -25,7 +25,6 @@ phases:
       - npx serverless deploy
       - echo "Build Server Path: $CODEBUILD_SRC_DIR"
 
-artifacts:
   artifacts:
     files:
       - ".serverless/cloudformation-template-update-stack.json"
