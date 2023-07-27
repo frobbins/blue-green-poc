@@ -43,7 +43,10 @@ const serverlessConfiguration: AWS = {
       }],
     },
     healthcheck: {
-      handler: 'src/handlers/healthcheck.main',
+      handler: 'src/handlers/healthcheck.main',    
+      tags: {
+        TestType: 'Smoke'
+      },  
       events: [{
         http: {
           method: 'get',
@@ -61,31 +64,7 @@ const serverlessConfiguration: AWS = {
     }
   },
   resources: {
-    Resources: {
-      // GetSwingsAliasLive: {
-      //   Type: 'AWS::Lambda::Alias',
-      //   Properties: {
-      //     FunctionName: 'wgt-guru-pink-getAllSwings',
-      //     FunctionVersion: '$LATEST',
-      //     Name: 'live',
-      //   },
-      // },
-      // CreateSwingAliasLive: {
-      //   Type: 'AWS::Lambda::Alias',
-      //   Properties: {
-      //     FunctionName: 'wgt-guru-pink-createSwing',
-      //     FunctionVersion: '$LATEST',
-      //     Name: 'live',
-      //   },
-      // },
-      // HealthCheckAliasLive: {
-      //   Type: 'AWS::Lambda::Alias',
-      //   Properties: {
-      //     FunctionName: 'wgt-guru-pink-healthcheck',
-      //     FunctionVersion: '$LATEST',
-      //     Name: 'live',
-      //   },
-      // },
+    Resources: {      
       GetSwingsAliasStaging: {
         Type: 'AWS::Lambda::Alias',
         Properties: {
