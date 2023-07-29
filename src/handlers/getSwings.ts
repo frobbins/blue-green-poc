@@ -26,7 +26,7 @@ export const getSwings: APIGatewayProxyHandler = async (): Promise<APIGatewayPro
 
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Unable to get swings' }),
+      body: JSON.stringify({ message: 'Unable to get swings!!' }),
     };
   }
 };
