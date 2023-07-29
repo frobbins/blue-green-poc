@@ -21,7 +21,7 @@ phases:
 
   post_build:
     commands:
-      - echo executing blue-green deployment
+      - echo executing canary deployment
       - npx serverless deploy
       # - aws stepfunctions start-execution --state-machine-arn arn:aws:states:us-east-1:345598404247:stateMachine:abe_deployer --input '{"stackName":"wgt-guru-pink"}'
       # Add commands here to get the stack ID and start the step function
