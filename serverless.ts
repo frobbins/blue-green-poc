@@ -63,34 +63,34 @@ const serverlessConfiguration: AWS = {
       }
     }
   },
-  resources: {
-    Resources: {      
-      GetSwingsAliasStaging: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-getAllSwings',
-          FunctionVersion: '$LATEST',
-          Name: 'staging',
-        },
-      },
-      CreateSwingAliasStaging: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-createSwing',
-          FunctionVersion: '$LATEST',
-          Name: 'staging',
-        },
-      },
-      HealthCheckAliasStaging: {
-        Type: 'AWS::Lambda::Alias',
-        Properties: {
-          FunctionName: 'wgt-guru-pink-healthcheck',
-          FunctionVersion: '$LATEST',
-          Name: 'staging',
-        },
-      },
-    },
-  },
+  // resources: {
+  //   Resources: {      
+  //     GetSwingsAliasStaging: {
+  //       Type: 'AWS::Lambda::Alias',
+  //       Properties: {
+  //         FunctionName: 'wgt-guru-pink-getAllSwings',
+  //         FunctionVersion: '$LATEST',
+  //         Name: 'staging',
+  //       },
+  //     },
+  //     CreateSwingAliasStaging: {
+  //       Type: 'AWS::Lambda::Alias',
+  //       Properties: {
+  //         FunctionName: 'wgt-guru-pink-createSwing',
+  //         FunctionVersion: '$LATEST',
+  //         Name: 'staging',
+  //       },
+  //     },
+  //     HealthCheckAliasStaging: {
+  //       Type: 'AWS::Lambda::Alias',
+  //       Properties: {
+  //         FunctionName: 'wgt-guru-pink-healthcheck',
+  //         FunctionVersion: '$LATEST',
+  //         Name: 'staging',
+  //       },
+  //     },
+  //   },
+  // },
 };
 
 module.exports = serverlessConfiguration;
