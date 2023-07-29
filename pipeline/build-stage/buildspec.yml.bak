@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Running all the unit tests...
+      - npm run test
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code...
+      - npm run build
+
+  post_build:
+    commands:
+      - echo executing blue-green deployment
+      - npx serverless deploy
+
+artifacts:
+  files:
+    - ".serverless/cloudformation-template-update-stack.json"
+    - ".serverless/serverless-state.json"
+  base-directory: "./"
