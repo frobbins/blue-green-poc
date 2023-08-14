@@ -16,15 +16,15 @@ export const main: APIGatewayProxyHandler = async () => {
         return {
             statusCode: 200,
             body: JSON.stringify({
-                message: 'Server and database are healthy for staging!!',
+                message: 'Server and database are healthy :)',
             }),
         };
     } catch (error) {
-        console.error('Database healthcheck failed for staging!:', error);
+        console.error('Database healthcheck failed:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({
-                message: 'Server is healthy, but database connection failed for staging!',
+                message: 'Server is healthy, but database connection failed :(',
             }),
         };
     }
