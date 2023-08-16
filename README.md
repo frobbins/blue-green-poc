@@ -4,7 +4,7 @@ This project has been generated using the `aws-nodejs-typescript` template from 
 
 For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
 
-## Installation/deployment instructions!!
+## Installation/deployment instructions!
 
 Depending on your favorite package manager, follow the instructions below to deploy your project.
 
