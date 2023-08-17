@@ -7,15 +7,15 @@ const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 export const main: APIGatewayProxyHandler = async (event) => {
     // Database healthcheck
     // Check for error flag in header
-    console.info('Checking headers for the error-flag....');
+    console.info('Checking request params for the error-flag....');
 
     console.info('Received headers:', JSON.stringify(event.headers));
 
-    if (event.headers && event.headers['error-flag']) {
+    if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
         return {
-            statusCode: 400,
+            statusCode: 500,
             body: JSON.stringify({
-                message: 'Error flag detected in header. Health check failed :(',
+                message: 'Error flag detected in query parameters. Health check failed :(',
             }),
         };
     } else {
