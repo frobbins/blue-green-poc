@@ -4,8 +4,17 @@ import * as AWS from 'aws-sdk';
 
 const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
-export const main: APIGatewayProxyHandler = async () => {
+export const main: APIGatewayProxyHandler = async (event) => {
     // Database healthcheck
+    // Check for error flag in header
+    if (event.headers && event.headers['error-flag']) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                message: 'Error flag detected in header. Health check failed :(',
+            }),
+        };
+    }
     try {
         const params = {
             TableName: process.env.DYNAMODB_TABLE || '',
