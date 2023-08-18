@@ -5,11 +5,10 @@ import * as AWS from 'aws-sdk';
 const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
 
 export const main: APIGatewayProxyHandler = async (event) => {
-    // Database healthcheck
-    // Check for error flag in header
-    console.info('Checking request params for the error-flag....');
 
     console.info('Received headers:', JSON.stringify(event.headers));
+
+    console.info('Received query params:', JSON.stringify(event.queryStringParameters));
 
     if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
         return {
@@ -18,9 +17,9 @@ export const main: APIGatewayProxyHandler = async (event) => {
                 message: 'Error flag detected in query parameters. Health check failed :(',
             }),
         };
-    } else {
-        console.error('No error flag found in the request, proceeding with the healthcheck.');
     }
+    console.info('No error flag found in the request, proceeding with the healthcheck.');
+
     try {
         const params = {
             TableName: process.env.DYNAMODB_TABLE || '',
