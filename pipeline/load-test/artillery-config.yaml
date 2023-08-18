@@ -2,7 +2,7 @@ config:
   target: 'https://061aqiq135.execute-api.us-east-1.amazonaws.com/dev'
   processor: './processor.js' # Path to the custom processor file
   phases:
-    - duration: 20
+    - duration: 60
       arrivalRate: 5
 
 scenarios:

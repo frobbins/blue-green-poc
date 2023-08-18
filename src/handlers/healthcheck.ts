@@ -3,22 +3,20 @@ import 'source-map-support/register';
 import * as AWS from 'aws-sdk';
 
 const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
+const version = process.env.AWS_LAMBDA_FUNCTION_VERSION;
 
 export const main: APIGatewayProxyHandler = async (event) => {
-
-    console.info('Received headers:', JSON.stringify(event.headers));
-
-    console.info('Received query params:', JSON.stringify(event.queryStringParameters));
-
+    console.info(`Entry: Healthcheck version: ${version}`);
     if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
+        console.info(`Healthcheck version: ${version} : Error flag detected!`);
         return {
             statusCode: 500,
             body: JSON.stringify({
-                message: 'Error flag detected in query parameters. Health check failed :(',
+                message: `Healthcheck version: ${version} : Error flag detected!`,
             }),
         };
     }
-    console.info('No error flag found in the request, proceeding with the healthcheck.');
+    console.info(`Healthcheck version: ${version} : No error flag.`);
 
     try {
         const params = {
