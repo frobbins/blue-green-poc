@@ -48,7 +48,7 @@ export const createSwing = async (event: APIGatewayProxyEvent | string): Promise
     
     response = {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Unable to create swing!!!' }),
+      body: JSON.stringify({ message: 'Unable to create swing!!' }),
     };
   }
 
