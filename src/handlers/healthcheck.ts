@@ -8,14 +8,17 @@ const version = process.env.AWS_LAMBDA_FUNCTION_VERSION;
 export const main: APIGatewayProxyHandler = async (event) => {
     console.info(`Entry: Healthcheck version: ${version}`);
     if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
-        console.info(`Healthcheck version: ${version} : Error flag detected!`);
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                message: `Healthcheck version: ${version} : Error flag detected!`,
-            }),
-        };
+        throw new Error("500 Error flag detected!");
     }
+    // if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
+    //     console.info(`Healthcheck version: ${version} : Error flag detected!`);
+    //     return {
+    //         statusCode: 500,
+    //         body: JSON.stringify({
+    //             message: `Healthcheck version: ${version} : Error flag detected!`,
+    //         }),
+    //     };
+    // }
     console.info(`Healthcheck version: ${version} : No error flag.`);
 
     try {
