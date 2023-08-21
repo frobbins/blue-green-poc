@@ -39,7 +39,7 @@ export const main: APIGatewayProxyHandler = async (event) => {
         return {
             statusCode: 500,
             body: JSON.stringify({
-                message: 'Server is healthy, but database connection failed! :(',
+                message: 'Server is healthy, but database connection failed!! :(',
             }),
         };
     }
