@@ -10,7 +10,7 @@ custom:
     blockPublicAccess: true
     tags:
       - Key: Environment
-        Value: production
+        Value: lab
 provider:
   name: aws
   stage: dev

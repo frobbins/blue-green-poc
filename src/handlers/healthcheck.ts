@@ -3,9 +3,15 @@ import 'source-map-support/register';
 import * as AWS from 'aws-sdk';
 
 const db = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'});
+const version = process.env.AWS_LAMBDA_FUNCTION_VERSION;
 
-export const main: APIGatewayProxyHandler = async () => {
-    // Database healthcheck
+export const main: APIGatewayProxyHandler = async (event) => {
+    console.info(`Entry: Healthcheck version: ${version}`);
+    if (event.queryStringParameters && event.queryStringParameters['error-flag'] === 'true') {
+        throw new Error("500 Error flag detected!");
+    }
+    console.info(`Healthcheck version: ${version} : No error flag.`);
+
     try {
         const params = {
             TableName: process.env.DYNAMODB_TABLE || '',
@@ -24,7 +30,7 @@ export const main: APIGatewayProxyHandler = async () => {
         return {
             statusCode: 500,
             body: JSON.stringify({
-                message: 'Server is healthy, but database connection failed :(',
+                message: 'Server is healthy, but database connection failed!! :(',
             }),
         };
     }

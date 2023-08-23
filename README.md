@@ -4,7 +4,7 @@ This project has been generated using the `aws-nodejs-typescript` template from 
 
 For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
 
-## Installation/deployment instructions!
+## Installation/deployment instructions!!
 
 Depending on your favorite package manager, follow the instructions below to deploy your project.
 
@@ -58,7 +58,7 @@ curl --location --request POST 'https://myApiEndpoint/dev/hello' \
 The project code base is mainly located within the `src` folder. This folder is divided in:
 
 - `functions` - containing code base and configuration for your lambda functions
-- `libs` - containing shared code base between your lambdas
+- `libs` - containing shared code base between your lambdas.
 
 ```
 .
