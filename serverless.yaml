@@ -14,7 +14,7 @@ custom:
 provider:
   name: aws
   stage: dev
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   region: us-east-1
   tags:
     coxauto:ci-id: CI2356106

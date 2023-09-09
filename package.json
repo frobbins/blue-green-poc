@@ -9,7 +9,7 @@
     "deploy": "npm run build && serverless deploy"
   },
   "engines": {
-    "node": ">=14.15.0"
+    "node": "16.20.2"
   },
   "dependencies": {
     "@middy/core": "^3.4.0",
