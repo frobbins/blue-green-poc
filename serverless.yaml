@@ -3,6 +3,11 @@ frameworkVersion: '3'
 plugins:
   - serverless-webpack
   - serverless-deployment-bucket
+
+Transform:
+  - AWS::Serverless-2016-10-31
+  - ALKSify
+
 custom:
   deploymentBucket:
     name: wgt-guru
