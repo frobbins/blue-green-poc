@@ -4,10 +4,6 @@ plugins:
   - serverless-webpack
   - serverless-deployment-bucket
 
-resources:
-  Transform:
-    - ALKSify
-
 provider:
   name: aws
   stage: dev
