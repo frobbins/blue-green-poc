@@ -8,24 +8,21 @@ resources:
   Transform:
     - ALKSify
 
-custom:
-  deploymentBucket:
-    name: codebuild-wgt-guru
-    versioning: true
-    blockPublicAccess: true
-    tags:
-      - Key: Environment
-        Value: lab
 provider:
   name: aws
   stage: dev
   runtime: nodejs16.x
   region: us-east-1
+
   tags:
-    coxauto:ci-id: CI2356106
+    project: wgt-guru
   deploymentBucket:
-    name: wgt-guru
-    serverSideEncryption: aws:kms
+    name: codebuild-wgt-guru
+    versioning: true
+    blockPublicAccess: true
+    tags:
+      - Key: project
+        Value: wgt-guru
   environment:
     DYNAMODB_TABLE: GolfSwingMetrics
   iamRoleStatements:
