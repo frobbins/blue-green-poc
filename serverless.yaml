@@ -10,7 +10,7 @@ resources:
 
 custom:
   deploymentBucket:
-    name: wgt-guru
+    name: codebuild-wgt-guru
     versioning: true
     blockPublicAccess: true
     tags:
